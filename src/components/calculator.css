@@ -1,0 +1,65 @@
+.calculator {
+  margin: auto;
+  margin-top: 30px;
+  padding: 10px;
+  width: fit-content;
+  background-color: rgb(88, 88, 88);
+  border-radius: 5px;
+}
+
+.display {
+  text-align: right;
+  padding: 10px 5px;
+  font-size: 28px;
+  font-weight: bold;
+  font-family: 'digital', Arial, Helvetica, sans-serif;
+  background-color: rgb(172, 187, 131);
+}
+
+.btnBoard {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+}
+
+.col-2-width {
+  grid-column: span 2;
+}
+
+.button {
+  width: 100%;
+  background-color: rgb(53, 53, 53);
+  color: rgb(0, 153, 20);
+  font-size: 25px;
+  outline: 0;
+  box-sizing: border-box;
+  border: 2px solid rgb(53, 53, 53);
+  border-radius: 3px;
+  padding: 15px 20px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.button:active {
+  color: rgb(126, 255, 122);
+  text-shadow: 0 0 10px rgb(130, 255, 126);
+  border: 2px solid rgb(37, 37, 37);
+}
+
+.action {
+  background-color: rgb(247, 106, 12);
+  color: white;
+  outline: 0;
+  border: 1px solid rgb(87, 87, 87);
+}
+
+.action:active {
+  color: rgb(255, 255, 255);
+  text-shadow: 0 0 10px rgb(255, 255, 255);
+  border: 1px solid rgb(0, 0, 0);
+}
+
+@font-face {
+  font-family: digital;
+  src: url(digital.ttf);
+}
