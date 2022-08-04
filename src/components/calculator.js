@@ -5,70 +5,69 @@
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import './calculator.css';
-
+import calculate from '../logic/calculate';
 /// / number button
 // eslint-disable-next-line react/prefer-stateless-function
 export class Buttons extends React.Component {
   render() {
     return (
-      <button type="button" className="button">
-        {this.props.number}
+      <button onClick={this.props.onClick} type="button" className={this.props.className}>
+        {this.props.buttonName}
       </button>
     );
   }
 }
 
-/// display component
-// eslint-disable-next-line react/prefer-stateless-function
-export class Display extends React.Component {
-  render() {
-    return <p className="display">{this.props.value}</p>;
-  }
-}
-Display.defaultProps = {
-  value: 0,
-};
-
 /// / function button
-export class Action extends React.Component {
-  render() {
-    return <button className="button action">{this.props.lable}</button>;
-  }
-}
-Action.defaultProps = {
-  lable: '?',
-};
 
 export class Calculator extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      total: 0,
+      next: null,
+      operation: null,
+    };
+    this.clickHandler = this.clickHandler.bind(this);
+  }
+
+  clickHandler(e) {
+    const result = calculate(this.state, e.target.innerText);
+    this.setState(result);
+  }
+
   render() {
+    const { total, next, operation } = this.state;
+    const output = `${total || ''}${operation || ''}${next || ''}`;
+
     return (
       <>
         <div className="calculator">
           <div>
-            <Display value={0} />
+            <div className="display">{output || '0'}</div>
           </div>
           <div className="btnBoard">
-            <Buttons number="AC" />
-            <Buttons number="+/-" />
-            <Buttons number="%" />
-            <Action lable="/" />
-            <Buttons number={7} />
-            <Buttons number={8} />
-            <Buttons number={9} />
-            <Action lable="x" />
-            <Buttons number={4} />
-            <Buttons number={5} />
-            <Buttons number={6} />
-            <Action lable="-" />
-            <Buttons number={1} />
-            <Buttons number={2} />
-            <Buttons number={3} />
-            <Action lable="+" />
+            <Buttons onClick={this.clickHandler} buttonName="AC" className="button" />
+            <Buttons onClick={this.clickHandler} buttonName="+/-" className="button" />
+            <Buttons onClick={this.clickHandler} buttonName="%" className="button" />
+            <Buttons onClick={this.clickHandler} buttonName="÷" className="action button " />
+            <Buttons onClick={this.clickHandler} buttonName="7" className="button" />
+            <Buttons onClick={this.clickHandler} buttonName="8" className="button" />
+            <Buttons onClick={this.clickHandler} buttonName="9" className="button" />
+            <Buttons onClick={this.clickHandler} buttonName="x" className="action button " />
+            <Buttons onClick={this.clickHandler} buttonName="4" className="button" />
+            <Buttons onClick={this.clickHandler} buttonName="5" className="button" />
+            <Buttons onClick={this.clickHandler} buttonName="6" className="button" />
+            <Buttons onClick={this.clickHandler} buttonName="-" className="action button " />
+            <Buttons onClick={this.clickHandler} buttonName="1" className="button" />
+            <Buttons onClick={this.clickHandler} buttonName="2" className="button" />
+            <Buttons onClick={this.clickHandler} buttonName="3" className="button" />
+            <Buttons onClick={this.clickHandler} buttonName="+" className="action button " />
             <div className="col-2-width">
-              <Buttons number={0} />
+              <Buttons onClick={this.clickHandler} buttonName="0" className="button" />
             </div>
-            <Buttons number="." />
-            <Action lable="=" />
+            <Buttons onClick={this.clickHandler} buttonName="." className="button" />
+            <Buttons onClick={this.clickHandler} buttonName="=" className="action button " />
           </div>
         </div>
       </>

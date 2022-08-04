@@ -9,8 +9,9 @@
 
 .display {
   text-align: right;
-  padding: 10px 5px;
-  font-size: 28px;
+  padding: 12px 5px;
+  margin: 20px auto;
+  font-size: 38px;
   font-weight: bold;
   font-family: 'digital', Arial, Helvetica, sans-serif;
   background-color: rgb(172, 187, 131);
