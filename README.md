@@ -11,6 +11,9 @@
 - JavaScript
 - Linters
 
+## Live Demo
+visit [Math Magician](https://62f3d402e5ab0e00804388a4--comforting-biscuit-6d9add.netlify.app/) 
+
 ## Get Started
 To get a local copy of this calculator, Please follow these simple example steps.
 1. Open Git Bash.
